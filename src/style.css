@@ -1,0 +1,14 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+	scroll-behavior: smooth;
+	user-select: none;
+	color: #ECECEC;
+	background: #242424;
+}
+
+code

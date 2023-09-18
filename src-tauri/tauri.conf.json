@@ -1,0 +1,88 @@
+{
+  "build": {
+    "beforeDevCommand": "",
+    "beforeBuildCommand": "",
+    "devPath": "../src",
+    "distDir": "../src",
+    "withGlobalTauri": true
+  },
+  "package": {
+    "productName": "TauriTemplate",
+    "version": "1.0.0"
+  },
+  "tauri": {
+    "allowlist": {
+      "all": false,
+      "shell": {
+        "all": false,
+        "open": true
+      },
+      "window": {
+        "all": false,
+        "close": true,
+        "hide": true,
+        "show": true,
+        "maximize": true,
+        "minimize": true,
+        "unmaximize": true,
+        "unminimize": true
+      },
+      "fs": {
+        "all": true
+      }
+    },
+    "bundle": {
+      "active": true,
+      "publisher": "Author",
+      "copyright": "Author",
+      "category": "",
+      "icon": [
+        "icons/32x32.png",
+        "icons/128x128.png",
+        "icons/128x128@2x.png",
+        "icons/icon.icns",
+        "icons/icon.ico"
+      ],
+      "identifier": "TauriTemplate",
+      "longDescription": "Tauri App Template With Some Config To Get Started",
+      "shortDescription": "Tauri App Template With Some Config To Get Started",
+      "externalBin": [],
+      "resources": [],
+      "targets": "all",
+      "windows": {
+        "certificateThumbprint": null,
+        "digestAlgorithm": "sha256",
+        "timestampUrl": "",
+        "wix": {
+          "language": "en-US"
+        }
+      }
+    },
+    "security": {
+      "csp": null
+    },
+    "updater": {
+      "active": true,
+      "dialog": true,
+      "endpoints": [
+        
+      ],
+      "windows": {
+        "installMode": "passive"
+      },
+      "pubkey": ""
+    },
+    "windows": [
+      {
+        "title": "Tauri App",
+        "label": "main",
+        "url": "index.html",
+        "fullscreen": false,
+        "focus": true,
+        "resizable": true,
+        "decorations": true,
+        "center": true
+      }
+    ]
+  }
+}
