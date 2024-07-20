@@ -1,22 +1,135 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
+
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<script type="module" src="/main.js" defer></script>
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/fonts.css">
 
-	<link rel="stylesheet" href="style.css">
+	<script type="module" src="/main.js" defer></script>
+	<script src="js/script.js" defer></script>
+
+	<!-- PRELOADING CSS/JS/JSON -->
+	<link rel="preload" href="css/fonts.css" as="style" type="text/css">
+	<link rel="preload" href="css/style.css" as="style" type="text/css">
+	<!-- PRELOADING FONTS -->
+	<link rel="preload" href="assets/fonts/HelveticaNowDisplay-Bold.otf" as="font" type="font/otf" crossorigin>
+	<link rel="preload" href="assets/fonts/HelveticaNowDisplay-BoldIta.otf" as="font" type="font/otf" crossorigin>
+	<link rel="preload" href="assets/fonts/HelveticaNowDisplay-Light.otf" as="font" type="font/otf" crossorigin>
+	<link rel="preload" href="assets/fonts/HelveticaNowDisplay-LightIta.otf" as="font" type="font/otf" crossorigin>
+	<link rel="preload" href="assets/fonts/HelveticaNowDisplay-MedIta.otf" as="font" type="font/otf" crossorigin>
+	<link rel="preload" href="assets/fonts/HelveticaNowDisplay-Medium.otf" as="font" type="font/otf" crossorigin>
+	<link rel="preload" href="assets/fonts/HelveticaNowDisplay-RegIta.otf" as="font" type="font/otf" crossorigin>
+	<link rel="preload" href="assets/fonts/HelveticaNowDisplay-Regular.otf" as="font" type="font/otf" crossorigin>
+	<!-- PRELOADING UI ICONS -->
+	<link rel="preload" href="assets/images/ui/check.svg" as="image" type="image/svg+xml">
+	<link rel="preload" href="assets/images/ui/close.svg" as="image" type="image/svg+xml">
+	<link rel="preload" href="assets/images/ui/disabled.svg" as="image" type="image/svg+xml">
+	<link rel="preload" href="assets/images/ui/external.svg" as="image" type="image/svg+xml">
+	<link rel="preload" href="assets/images/ui/github.svg" as="image" type="image/svg+xml">
+	<link rel="preload" href="assets/images/ui/loader.svg" as="image" type="image/svg+xml">
+	<link rel="preload" href="assets/images/ui/maximize.svg" as="image" type="image/svg+xml">
+	<link rel="preload" href="assets/images/ui/minimize.svg" as="image" type="image/svg+xml">
+	<link rel="preload" href="assets/images/ui/notification.svg" as="image" type="image/svg+xml">
+	<link rel="preload" href="assets/images/ui/send.svg" as="image" type="image/svg+xml">
+	<!-- PRELOADING IMAGES -->
+	<link rel="preload" href="assets/images/tauri.svg" as="image" type="image/svg+xml">
+	<!-- PREFETCHING PAGES -->
+	<link rel="prefetch" href="index.html" as="document">
+
 </head>
 
 <body>
 
-	<div style="height: 100vh; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px;">
+	<div class="flex flexCol" style="height: 100vh; width: 100%; background: #242424; position: fixed; top: 0; align-items: center; justify-content: center;">
 
-		<h1 style="font-size: 50px;">Hello World!</h1>
+		<div id="titlebar" class="flex" style="width: 100%; height: 35px; align-items: center; justify-content: center;">
+			<div class="titlebarContainer flex" style="width: 100%; height: 100%; align-items: center; justify-content: space-between;">
+				<div class="flex flexRow" style="height: 100%; align-items: center; justify-content: center; padding-left: 10px; gap: 6px;">
+					<span class="flex flexRow" style="height: 100%; align-items: center; gap: 3px;">
+						<!-- <img style="height: 9px;" src="assets/images/logo.png"> -->
+						<h1 style="font-family: var(--regular); font-size: 10px; color: #ECECEC;">TauriTemplate</h1>
+					</span>
 
-		<p>Edit <code style="font-family: 'Courier New', Courier, monospace;">index.html</code> to see changes</p>
+					<span class="flex" style="height: 100%; font-size: 10px; font-family: var(--light); color: #B0B0B0; align-items: center;">v1.0.0</span>
+				</div>
+
+				<div style="height: 100%; display: flex; flex-direction: row; align-items: center; gap: 20px; z-index: 10;">
+					<a class="titlebarBtn flex" title="GitHub Repository" style="color: #ECECEC; text-decoration: none;" href="https://github.com/sandunwira/TauriTemplate" target="_blank">
+						<img style="height: 10px;" src="assets/images/ui/github.svg">
+						<span style="font-family: var(--light); font-size: 10px; letter-spacing: 0.5px;">GitHub</span>
+						<img style="height: 10px;" src="assets/images/ui/external.svg">
+					</a>
+
+					<div class="flex flexRow" style="height: 100%;">
+						<div id="titlebar-minimize" title="Minimize" class="flex" style="height: 100%; width: 40px; align-items: center; justify-content: center;">
+							<img style="width: 8px;" src="assets/images/ui/minimize.svg">
+						</div>
+
+						<div id="titlebar-maximize" title="Maximize" class="flex" style="height: 100%; width: 40px; align-items: center; justify-content: center;">
+							<img style="width: 8px;" src="assets/images/ui/maximize.svg">
+						</div>
+
+						<div id="titlebar-close" title="Close" class="flex" style="height: 100%; width: 40px; align-items: center; justify-content: center;">
+							<img style="width: 8px;" src="assets/images/ui/close.svg">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div data-tauri-drag-region style="position: fixed; top: 5px; left: 0; background: transparent; height: 25px; width: calc(100% - 120px);"></div>
+
+
+		<div class="flex flexCol" style="height: calc(100% - 35px); width: 100%; align-items: center; justify-content: center; gap: 40px;">
+			<div class="flex flexCol" style="align-items: center; gap: 10px;">
+				<h1 style="font-family: var(--bold); font-size: 40px; color: #ECECEC;">
+					<img style="height: 30px;" src="assets/images/tauri.svg">
+					TauriTemplate
+				</h1>
+				<p>This is a template for building modern and minimalistic desktop applications using Tauri</p>
+			</div>
+
+			<div class="flex flexRow" style="gap: 20px;">
+				<button title="Enabled">
+					<img src="assets/images/ui/check.svg">
+					<span>Enabled</span>
+				</button>
+				<button id="notificationChecker" title="Check Notifications">
+					<img src="assets/images/ui/notification.svg">
+					<span>Check Notifications</span>
+				</button>
+				<button title="Loading" disabled>
+					<img src="assets/images/ui/loader.svg" class="spin">
+					<span>Loading</span>
+				</button>
+				<button title="Disabled" disabled>
+					<img src="assets/images/ui/disabled.svg">
+					<span>Disabled</span>
+				</button>
+			</div>
+
+			<form id="nameForm" class="flex flexRow" style="gap: 10px;">
+				<input id="nameInput" type="text" style="width: 300px;" placeholder="Enter your name" title="Enter your name" autocomplete="off" required>
+				<button id="nameSubmitBtn" type="submit" title="Submit">
+					<span>Submit</span>
+					<img src="assets/images/ui/send.svg">
+				</button>
+			</form>
+
+			<p class="flex flexRow" style="gap: 5px;">
+				Icons by
+				<a class="flex flexRow" style="align-items: center; gap: 2px;" href="https://tabler.io/icons" target="_blank">
+					Tabler Icons <img style="height: 16px;" src="assets/images/ui/external.svg">
+				</a>
+				and
+				<a class="flex flexRow" style="align-items: center; gap: 2px;" href="https://fontawesome.com/search" target="_blank">
+					FontAwesome <img style="height: 16px;" src="assets/images/ui/external.svg">
+				</a>
+			</p>
+		</div>
 
 	</div>
 

@@ -2,6 +2,7 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 use tauri::Manager;
+use window_shadows::set_shadow;
 
 #[derive(Clone, serde::Serialize)]
 struct Payload {
@@ -13,6 +14,9 @@ fn main() {
   tauri::Builder::default()
     .setup(|app| {
       let main_window = app.get_window("main").unwrap();
+
+      // SET SHADOWS =========================================================================== //
+      set_shadow(&main_window, true).unwrap();
 
       // DISABLE RELOAD ======================================================================== //
       main_window.eval("window.addEventListener('keydown', function(e) {if (e.keyCode == 116) { e.preventDefault(); }});").unwrap(); // F5  |  Main
@@ -43,7 +47,7 @@ fn main() {
     .plugin(tauri_plugin_single_instance::init(|app, argv, cwd| {
       println!("{}, {argv:?}, {cwd}", app.package_info().name);
       app.emit_all("single-instance", Payload { args: argv, cwd }).unwrap();
-    })) // For Blocking Multiple Instances
+    }))
     .run(tauri::generate_context!())
     .expect("error while running tauri application");
 }
